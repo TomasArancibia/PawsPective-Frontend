@@ -14,7 +14,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/edit_account" element={<EditAccount />} />
-          Hola
         </Routes>
       </BrowserRouter>
     </>
