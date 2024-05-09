@@ -3,10 +3,10 @@ import { faDog } from "@fortawesome/free-solid-svg-icons";
 
 
 
-const Navbars = () => {
+const Footer = () => {
   return (
     <div>
-      <nav className="navbar fixed-top">
+      <nav className="navbar fixed-bottom">
         <div className="container-fluid text-light">
           <FontAwesomeIcon icon={faDog} /> Pawspective{" "}
           <FontAwesomeIcon icon={faDog} flip="horizontal" />
@@ -16,5 +16,5 @@ const Navbars = () => {
   );
 };
 
-export default Navbars;
+export default Footer;
 
