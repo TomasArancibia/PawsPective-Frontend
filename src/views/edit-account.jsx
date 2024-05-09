@@ -1,4 +1,4 @@
-import Navbars from "../components/navbars";
+import Navbars from "../components/Navbars";
 
 const EditAccount = () => {
     return (
