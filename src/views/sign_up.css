@@ -23,6 +23,21 @@
 
 .form-sign-up {
     position: relative;
-    width:max-content;
     margin: auto;
+}
+
+.circle-photo {
+    height: 17em;
+    width: 17em;
+    border-radius: 100%;
+    background-color:  #EC9D9D;
+    margin-bottom: 2em;
+    margin-top:  0em;
+}
+
+.signUp-btn {
+    background-color: #EC9D9D;
+    color: white;
+    width: 7em;
+    
 }
