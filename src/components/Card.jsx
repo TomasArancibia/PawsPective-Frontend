@@ -18,14 +18,16 @@ const Card = () => {
           />
         </div>
         <div className="d-inline-flex justify-content-end space-evenly text-light p-1 m-1">
-          <div className="p-1">
-            <FontAwesomeIcon icon={faPaw} />
-          </div>
-          <div className="p-1">
-            <FontAwesomeIcon icon={faComment} />
-          </div>
-          <div className="p-1">
-            <FontAwesomeIcon icon={faPaperPlane} />
+          <div className="border rounded-pill d-inline-flex p-1">
+            <div className="p-1">
+              <FontAwesomeIcon icon={faPaw} />
+            </div>
+            <div className="p-1">
+              <FontAwesomeIcon icon={faComment} />
+            </div>
+            <div className="p-1">
+              <FontAwesomeIcon icon={faPaperPlane} />
+            </div>
           </div>
         </div>
         <div className="card-body border p-1 m-1 rounded">

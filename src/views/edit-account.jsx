@@ -1,9 +1,9 @@
-import Navbars from "../components/Navbars";
+import Edit from "../components/Edit";
 
 const EditAccount = () => {
     return (
         <div>
-            <Navbars />
+            <Edit />
         </div>
     );
 };
