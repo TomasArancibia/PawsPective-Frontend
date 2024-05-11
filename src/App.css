@@ -36,3 +36,15 @@
   height: 25px;
   width: 25px;
 }
+
+.card {
+  background-color: #EC9D9D;
+}
+
+.card-body {
+  background-color: #FDDFDF;
+}
+
+.btn {
+  background-color: #EC9D9D;
+}
