@@ -5,17 +5,25 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import EditAccount from './views/edit-account.jsx';
+
+import SignUp from './views/sign_up.jsx';
+import Navbars from "./components/navbars";
+import Footer from "./components/footer";
+
 
 function App() {
 
   return (
     <>
+      
       <BrowserRouter>
+      <Navbars />
+      <Footer />
         <Routes>
-          <Route path="/edit_account" element={<EditAccount />} />
+          <Route path="/sign_up" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
+
     </>
   )
 }
