@@ -41,7 +41,7 @@ const SignUp = () => {
                         </div>
                         <div>
                             <label htmlFor="formPassword" className="form-label"> Password </label>
-                            <input className="form-control me-1 full-input" type="password" id="formPassword" placeholder="**********" />
+                            <input className="form-control me-1 full-input" type="password" id="formPassword" placeholder="Password" />
                         </div>
                         
                     </div>
