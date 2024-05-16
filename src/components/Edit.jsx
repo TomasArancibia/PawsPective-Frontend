@@ -1,21 +1,24 @@
+import React, { useContext } from "react";
 import { useState } from "react";
-import { eraseUser } from "../store/flux";
-import { editUser } from "../store/flux";
+import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import { faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import userIcon from "../assets/user-icon.png";
 const Edit = ({ user }) => {
+
+  const { store, actions } = useContext(Context);
+
   const [formData, setFormData] = useState({ ...user });
 
   const handleEdit = () => {
     console.log("Editing user:", formData);
-    editUser(user.id, formData);
+    actions.editUser(user.id, formData);
   };
 
   const handleDelete = () => {
     console.log("Deleting user:", user.id);
-    eraseUser(user.id);
+    actions.eraseUser(user.id);
   };
 
   return (
