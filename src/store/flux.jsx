@@ -13,7 +13,26 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.error("An error occurred while loading users:", error);
         }
       },
+      createUser: async (userData) => {
+        try {
+          const response = await fetch(
+            `http://127.0.0.1:3000/users/register`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            }
+          );
 
+          if (response.ok) {
+            getActions().loadUsers();
+          }
+        } catch (error) {
+          console.error("An error occurred while updating user:", error);
+        }
+      },
       editUser: async (userId, userData) => {
         try {
           const response = await fetch(
