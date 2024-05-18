@@ -14,13 +14,15 @@ const getState = ({ getStore, getActions, setStore }) => {
     actions: {
       handleChange: (e) => {
         const { name, value } = e.target;
+        const {post} = getStore()
         setStore({
           post: {
-            ...getStore().post,
+            ...post,
             [name]: value,
           },
         });
       },
+      
       handleSubmit: async (e) => {
         e.preventDefault();
         try {

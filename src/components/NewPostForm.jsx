@@ -20,35 +20,34 @@ const NewPostForm = () => {
       <>
         <form className="p-3" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="fullName" className="form-label h3">
-              Full Name
+            <label htmlFor="description" className="form-label">
+              Description
             </label>
             <input
               type="text"
               className="form-control"
-              id="fullName"
-              placeholder="Enter Full Name"
-              name="full_name"
-              value={store.post.full_name}
+              id="description"
+              placeholder="Enter Description for the post"
+              name="description"
+              value={store.post.description}
               onChange={actions.handleChange}
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label h3">
-              Email
+            <label htmlFor="Source_Url" className="form-label">
+              Photo
             </label>
             <input
-              type="email"
+              type="file"
               className="form-control"
-              id="email"
-              placeholder="Enter email address"
-              name="email"
-              value={store.post.email}
-              onChange={actions.handleChange}
+              id="Source_Url"
+              name="Source_Url"
+              // value={store.post.Source_Url}
+              // onChange={actions.handleChangeFile}
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="phomeNumber" className="form-label h3">
+            <label htmlFor="phomeNumber" className="form-label">
               Phone Number
             </label>
             <input
@@ -62,7 +61,7 @@ const NewPostForm = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="address" className="form-label h3">
+            <label htmlFor="address" className="form-label">
               Address
             </label>
             <input
