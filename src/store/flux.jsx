@@ -1,7 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+
       users: [],
+      listOfPost: [],
     },
     actions: {
       loadUsers: async () => {
@@ -74,4 +76,4 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
   };
 };
-export default getState;
+

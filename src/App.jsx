@@ -16,6 +16,7 @@ import Navbars from "./components/navbars";
 import Footer from "./components/footer";
 import EditAccount from "./views/edit-account.jsx";
 import Feed from "./views/feed.jsx";
+import NewPost from "./views/new_post.jsx";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/edit_account" element={<EditAccount />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/sign_up" element={<SignUp />} />
+          <Route path="/new_post/:id" element={<NewPost />} />
+          <Route path="/new_post/" element={<NewPost />} />
         </Routes>
       </BrowserRouter>
     </>

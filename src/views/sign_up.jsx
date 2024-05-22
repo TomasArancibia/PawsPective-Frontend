@@ -76,11 +76,13 @@ const SignUp = () => {
                         </div>
                         <div>
                             <label htmlFor="formPassword" className="form-label"> Password </label>
+
                             <input className="form-control me-1 full-input" type="password" id="formPassword" placeholder="**********" value={formData.password}
                                 onChange={(e) => {
                                     console.log("Password:", e.target.value);
                                     setFormData({ ...formData, password: e.target.value });
                                 }} />
+
                         </div>
 
                     </div>

@@ -7,6 +7,7 @@ import {
 import placeHolderImage from "../assets/Placeholder.png";
 
 const Card = () => {
+
   return (
     <div>
       <div className="card p-1 m-1" style={{ width: "18rem" }}>
