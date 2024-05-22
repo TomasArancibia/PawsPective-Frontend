@@ -1,0 +1,50 @@
+.name-lastname-input {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1em;
+}
+
+.username-age-input {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding: 1em;
+}
+
+.email-password {
+    width: 100%;
+    padding: 1em;
+}
+
+.full-input {
+    margin-bottom: 2em;
+}
+
+.form-sign-up {
+    position: relative;
+    margin: auto;
+}
+
+.circle-photo {
+    height: 15em;
+    width: 15em;
+    border-radius: 100%;
+    background-color:  #EC9D9D;
+    margin-bottom: 2em;
+    margin-top:  0em;
+}
+
+.Login-btn {
+    background-color: #EC9D9D;
+    color: white;
+    width: 7em;
+    
+}
+
+.signUp-btn {
+    background-color: #EC9D9D;
+    color: white;
+    width: 7em;
+    
+}
