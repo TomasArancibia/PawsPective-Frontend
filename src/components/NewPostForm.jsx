@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import Location from "./Location";
-
+import { useNavigate, NavLink } from "react-router-dom";
 
 const NewPostForm = () => {
   const { store, actions } = useContext(Context);
-
   const [formData, setFormData] = useState({});
   const [file, setFile] = useState(null)
+  const navegate = useNavigate()
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -22,7 +22,7 @@ const NewPostForm = () => {
     actions.createPost(fileData);
     setFormData({})
     setFile(null)
-    {/* Esta wea del fileData no se llena */ }
+    navegate('/feed')
   };
 
   return (
@@ -60,9 +60,14 @@ const NewPostForm = () => {
           />
         </div>
         {/* <Location/> */}
-        <button type="submit" className="btn btn-primary">
-          {store.post.id ? "Update" : "Submit"}
-        </button>
+        <div className='col-md-2 newpostbtns'>
+          <button type="submit" className="btn me-5 ms-0 newcard">
+            {store.post.id ? "Update" : "Submit"}
+          </button>
+          <NavLink className="btn btn-lg newcard ms-4" to="/feed">
+            Return to feed</NavLink>
+        </div>
+
       </form>
     </>
   );

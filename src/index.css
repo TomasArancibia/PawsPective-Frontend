@@ -28,6 +28,8 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 h1 {

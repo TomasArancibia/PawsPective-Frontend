@@ -1,24 +1,29 @@
 import React, { useContext, useEffect } from 'react';
 import { Context } from '../store/appContext';
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPaw,
+  faComment,
+  faPaperPlane,
+} from "@fortawesome/free-solid-svg-icons";
 
 const PostFeed = () => {
 
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    console.log(store.listOfPosts)
-    actions.FetchPosts();
+    actions.loadFeed();
   }, []);
 
   return (
     <>
-    <div className='col-md-2 float-end me-5 mb-3'>
-    <NavLink className="btn btn-success btn-lg" to="/new_post">Create new Post</NavLink>
+    <div className='col-md-2 text-center'>
+    <NavLink className="btn btn-lg newcard" to="/new_post">Create new Post</NavLink>
     </div>  
       <div className="container-fluid">
         {store.listOfPosts && store?.listOfPosts.map(post => (
-        <div>
+        <div className='mt-4 mb-4'>
         <div className="card p-1 m-1" style={{ width: "18rem" }}>
           <div className="container-fluid p-1">
             <img

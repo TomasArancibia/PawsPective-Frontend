@@ -92,10 +92,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           {/*alert(response)*/}
           if (response.ok) {
             const result = await response.json();
-            alert('Post created successfully! Image URL: ' + result.image_url);
+            console.log('Post created successfully!');
             getActions().loadFeed();
           } else {
-            alert('Error creating post.');
+            console.log('Error creating post.');
           }
         } catch(error) {
         console.error("An error occurred while creating post:", error);
@@ -103,9 +103,10 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     loadFeed: async () => {
       try {
+        {/*esto es un get de post solo eso en teoria esta listo el front, igual falta modificar, y pasar url de cloudinary en este*/}
         const response = await fetch("http://127.0.0.1:3000/feed");
-        const FeedData = await response.json();
-        setStore({ feed: FeedData });
+        const postData = await response.json();
+        setStore({ listOfPosts: postData });
       } catch (error) {
         console.error("An error occurred while loading Feed:", error);
       }
