@@ -1,85 +1,76 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-
+import Location from "./Location";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const NewPostForm = () => {
-    const { store, actions } = useContext(Context);
-  
-    const handleSubmit = async (e) => {
-     
-        e.preventDefault();
-        
-      if (store.post.id) {
-        actions.putFetchPost(store.post.id);
-      } else {
-       await actions.handleSubmit(e);
-      }
-    };
-  
-    return (
-      <>
-        <form className="p-3" onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="description" className="form-label">
-              Description
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="description"
-              placeholder="Enter Description for the post"
-              name="description"
-              value={store.post.description}
-              onChange={actions.handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="Source_Url" className="form-label">
-              Photo
-            </label>
-            <input
-              type="file"
-              className="form-control"
-              id="Source_Url"
-              name="Source_Url"
-              // value={store.post.Source_Url}
-              // onChange={actions.handleChangeFile}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="phomeNumber" className="form-label">
-              Phone Number
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="phoneNumber"
-              placeholder="Enter phone number"
-              name="phone"
-              value={store.post.phone}
-              onChange={actions.handleChange}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="address" className="form-label">
-              Address
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="faddress"
-              placeholder="Enter your address"
-              name="address"
-              value={store.post.address}
-              onChange={actions.handleChange}
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
+  const { store, actions } = useContext(Context);
+  const [formData, setFormData] = useState({});
+  const [file, setFile] = useState(null)
+  const navegate = useNavigate()
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  var fileData = new FormData();
+
+  const handleCreate = (e) => {
+    e.preventDefault()
+    fileData.append("post_data", JSON.stringify(formData))
+    fileData.append('source_url', file);
+    actions.createPost(fileData);
+    setFormData({})
+    setFile(null)
+    navegate('/feed')
+  };
+
+  return (
+    <>
+      <form className="p-3" onSubmit={(e) => {
+        console.log("Save button clicked");
+        handleCreate(e);
+      }}>
+        <div className="mb-3">
+          <label htmlFor="description" className="form-label">
+            Description
+          </label>
+          <textarea
+            type="text"
+            className="form-control"
+            id="description"
+            placeholder="Enter Description for the post"
+            name="description"
+            value={formData.description}
+            onChange={(e) => {
+              setFormData({ ...formData, description: e.target.value });
+            }}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="Source_Url" className="form-label">
+            Upload Photo
+          </label>
+          <input
+            type="file"
+            className="form-control"
+            id="Source_Url"
+            name="Source_Url"
+            onChange={handleFileChange}
+          />
+        </div>
+        {/* <Location/> */}
+        <div className='col-md-2 newpostbtns'>
+          <button type="submit" className="btn me-5 ms-0 newcard">
             {store.post.id ? "Update" : "Submit"}
           </button>
-        </form>
-      </>
-    );
-  };
-  
-  export default NewPostForm;
+          <NavLink className="btn btn-lg newcard ms-4" to="/feed">
+            Return to feed</NavLink>
+        </div>
+
+      </form>
+    </>
+  );
+};
+
+export default NewPostForm;

@@ -9,7 +9,7 @@ const NewPost = () => {
 
   return (
     <>
-      <h1>Nuevo Post</h1>
+      <h1>Create Post</h1>
       <NewPostForm formdata={store.post} handleSubmit={actions.handleSubmit} handleChange={actions.handleChange} />
     </>
   );
