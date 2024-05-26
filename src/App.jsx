@@ -25,7 +25,7 @@ function App() {
         <Navbars />
         <Footer />
         <Routes>
-          <Route path="/edit_account" element={<EditAccount />} />
+          <Route path="/edit_account/:userId" element={<EditAccount />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/sign_up" element={<SignUp />} />
           <Route path="/new_post/:id" element={<NewPost />} />

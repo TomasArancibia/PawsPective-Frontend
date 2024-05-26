@@ -1,13 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 
-
-
-const Navbars = () => {
+const Navbar = () => {
   return (
     <div>
       <nav className="navbar fixed-top">
-        <div className="container-fluid text-light fs-2">
+        <div className="container-fluid text-light">
           <FontAwesomeIcon icon={faDog} /> Pawspective{" "}
           <FontAwesomeIcon icon={faDog} flip="horizontal" />
         </div>
@@ -16,5 +14,4 @@ const Navbars = () => {
   );
 };
 
-export default Navbars;
-
+export default Navbar;
