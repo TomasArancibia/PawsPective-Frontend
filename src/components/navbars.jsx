@@ -7,7 +7,7 @@ const Navbars = () => {
   return (
     <div>
       <nav className="navbar fixed-top">
-        <div className="container-fluid text-light">
+        <div className="container-fluid text-light fs-2">
           <FontAwesomeIcon icon={faDog} /> Pawspective{" "}
           <FontAwesomeIcon icon={faDog} flip="horizontal" />
         </div>

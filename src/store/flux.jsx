@@ -29,6 +29,23 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+ /*     getUser: async () => {
+        try {
+          const response = await fetch(`http://127.0.0.1:3000/users/${'userId'}`, {
+            headers: {
+              "Authorization": `Bearer ${store.token}`
+            }
+          });
+          const userData = await response.json();
+          if (response.ok) {
+          setFormData(data);
+        } else {
+          console.error("Error getting user data:", data.error);
+        }
+      } catch (error) {
+        console.error("Error getting user data", error);
+      }
+    }, */
       createUser: async (userData) => {
         try {
           const response = await fetch("http://127.0.0.1:3000/users/register", {
@@ -40,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           if (response.ok) {
-            getActions().loadUsers();
+            getActions().loginUser(userData['email'], userData['password']);
           }
         } catch (error) {
           console.error("An error occurred while creating user:", error);
@@ -100,7 +117,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (response.ok) {
             const loginData = await response.json();
             setStore({ token: loginData.access_token });
-            localStorage.setItem('token', loginData.access_token);  // Almacena el token en el almacenamiento local
+            localStorage.setItem('token', loginData.access_token);
+            localStorage.setItem('token', loginData.access_token);// Almacena el token en el almacenamiento local
             getActions().loadUsers();
             console.log("Login successful:", loginData); 
           } else {
