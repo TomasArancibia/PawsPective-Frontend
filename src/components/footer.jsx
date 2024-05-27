@@ -13,7 +13,7 @@ const Footer = () => {
         <NavLink className="circle-element mb-0 text-light" to="/feed">
           <FontAwesomeIcon icon={faPhotoFilm} className="navIcon" />
         </NavLink>
-        <NavLink className="circle-element mb-0 text-light" to="/sign_up">
+        <NavLink className="circle-element mb-0 text-light" to="/login">
           <FontAwesomeIcon icon={faHouseChimney} className="navIcon" />
         </NavLink>
         <NavLink className="circle-element mb-0 text-light" to="/sign_up">
