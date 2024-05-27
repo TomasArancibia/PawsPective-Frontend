@@ -1,4 +1,5 @@
 import "./sign_up.css"
+import { useNavigate } from "react-router-dom";
 import Image from "../assets/AnimalsPhoto.png"
 import { useState, useContext } from "react";
 import { Context } from "../store/appContext";
@@ -9,12 +10,17 @@ const SignUp = () => {
 
     const [formData, setFormData] = useState({});
 
-    const handleCreate = (e) => {
-        e.preventDefault()
-        console.log("Creating user:", formData);
-        actions.createUser(formData);
+    const navigate = useNavigate();
+
+
+    const handleCreate = async (e) => {
+        e.preventDefault();
+        await actions.createUser(formData);
+        const data = await actions.fetchUserByUsername(formData.username);
+        navigate(`/edit_account/${data["id"]}`);
     };
 
+    // Clean up: Standardized variable names, removed debugging statements, improved readability.
 
     return (
         <>

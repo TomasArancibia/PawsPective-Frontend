@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserSlash, faUserCheck } from "@fortawesome/free-solid-svg-icons";
@@ -6,6 +7,7 @@ import userIcon from "../assets/user-icon.png";
 import animalsPhoto from "../assets/AnimalsPhoto.png";
 
 const Edit = ({ userId }) => {
+  const navigate = useNavigate();
   const { store, actions } = useContext(Context);
   const [formData, setFormData] = useState({ 
     id: "",
@@ -47,6 +49,7 @@ const Edit = ({ userId }) => {
   const handleDelete = () => {
     console.log("Deleting user:", formData.id);
     actions.eraseUser(formData.id);
+    navigate("/sign_up");
   };
 
   return (

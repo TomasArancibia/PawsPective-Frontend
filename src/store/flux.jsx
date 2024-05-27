@@ -9,9 +9,9 @@ const getState = ({ getStore, getActions, setStore }) => {
         source_url: "",
         date: "",
         location: "",
-        feed_id: ""
+        feed_id: "",
       },
-      token: null,  // acá se almacena el token?
+      token: null, // acá se almacena el token?
     },
     actions: {
       loadUsers: async () => {
@@ -19,8 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           const token = getStore().token;
           const response = await fetch("http://127.0.0.1:3000/users", {
             headers: {
-              "Authorization": `Bearer ${token}`
-            }
+              Authorization: `Bearer ${token}`,
+            },
           });
           const userData = await response.json();
           setStore({ users: userData });
@@ -29,23 +29,20 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
- /*     getUser: async () => {
-        try {
-          const response = await fetch(`http://127.0.0.1:3000/users/${'userId'}`, {
+      async fetchUserByUsername(username) {
+        const response = await fetch(
+          `http://127.0.0.1:3000/users/${username}`,
+          {
             headers: {
-              "Authorization": `Bearer ${store.token}`
-            }
-          });
-          const userData = await response.json();
-          if (response.ok) {
-          setFormData(data);
-        } else {
-          console.error("Error getting user data:", data.error);
+              Authorization: `bearer ${getStore().token}`,
+            },
+          }
+        );
+        if (response.ok) {
+          return await response.json();
         }
-      } catch (error) {
-        console.error("Error getting user data", error);
-      }
-    }, */
+      },
+
       createUser: async (userData) => {
         try {
           const response = await fetch("http://127.0.0.1:3000/users/register", {
@@ -57,7 +54,13 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
 
           if (response.ok) {
-            getActions().loginUser(userData['email'], userData['password']);
+            console.log("hola");
+            const data = await getActions().loginUser(
+              userData["email"],
+              userData["password"]
+            );
+            console.log(data);
+            return data;
           }
         } catch (error) {
           console.error("An error occurred while creating user:", error);
@@ -67,17 +70,20 @@ const getState = ({ getStore, getActions, setStore }) => {
       editUser: async (userId, userData) => {
         try {
           const token = getStore().token;
-          const response = await fetch(`http://127.0.0.1:3000/users/${userId}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(userData),
-          });
+          const response = await fetch(
+            `http://127.0.0.1:3000/users/${userId}`,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+              body: JSON.stringify(userData),
+            }
+          );
 
           if (response.ok) {
-            getActions().loadUsers();
+            fetchUser(userId);
           }
         } catch (error) {
           console.error("An error occurred while updating user:", error);
@@ -87,15 +93,18 @@ const getState = ({ getStore, getActions, setStore }) => {
       eraseUser: async (userId) => {
         try {
           const token = getStore().token;
-          const response = await fetch(`http://127.0.0.1:3000/users/${userId}`, {
-            method: "DELETE",
-            headers: {
-              "Authorization": `Bearer ${token}`
+          const response = await fetch(
+            `http://127.0.0.1:3000/users/${userId}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             }
-          });
+          );
 
           if (response.ok) {
-            getActions().loadUsers();
+            console.log("User deleted successfully");
           } else {
             console.error("Failed to delete user. Server response not OK.");
           }
@@ -117,10 +126,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           if (response.ok) {
             const loginData = await response.json();
             setStore({ token: loginData.access_token });
-            localStorage.setItem('token', loginData.access_token);
-            localStorage.setItem('token', loginData.access_token);// Almacena el token en el almacenamiento local
+            localStorage.setItem("token", loginData.access_token);
+            localStorage.setItem("token", loginData.access_token); // Almacena el token en el almacenamiento local
             getActions().loadUsers();
-            console.log("Login successful:", loginData); 
+            console.log("Login successful:", loginData);
+            return loginData;
           } else {
             console.error("Login failed. Server response not OK.");
           }
@@ -131,7 +141,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       logoutUser: () => {
         setStore({ token: null });
-        localStorage.removeItem('token');  // Elimina el token del almacenamiento local
+        localStorage.removeItem("token"); // Elimina el token del almacenamiento local
         console.log("Logout successful");
       },
 
@@ -141,17 +151,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           const response = await fetch("http://127.0.0.1:3000/feed/new_post", {
             method: "POST",
             headers: {
-              "Authorization": `Bearer ${token}`
+              Authorization: `Bearer ${token}`,
             },
-            body: postData
+            body: postData,
           });
 
           if (response.ok) {
             const result = await response.json();
-            console.log('Post created successfully!');
+            console.log("Post created successfully!");
             getActions().loadFeed();
           } else {
-            console.log('Error creating post.');
+            console.log("Error creating post.");
           }
         } catch (error) {
           console.error("An error occurred while creating post:", error);
