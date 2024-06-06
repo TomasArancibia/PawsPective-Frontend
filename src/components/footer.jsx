@@ -22,7 +22,7 @@ const Footer = () => {
         <NavLink className="circle-element mb-0 text-light" to="/edit_account">
           <FontAwesomeIcon icon={faUserGear} className="navIcon" />
         </NavLink>
-        <NavLink className="circle-element mb-0 text-light" to="/">
+        <NavLink className="circle-element mb-0 text-light" to="/edit_account/5">
           <FontAwesomeIcon icon={faUser} className="navIcon" />
         </NavLink>
       </nav>

@@ -113,7 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      loginUser: async (email, password) => {
+      login: async (email, password) => {
         try {
           const response = await fetch("http://127.0.0.1:3000/users/login", {
             method: "POST",
