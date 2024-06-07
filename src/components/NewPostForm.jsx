@@ -6,23 +6,42 @@ import { useNavigate, NavLink } from "react-router-dom";
 const NewPostForm = () => {
   const { store, actions } = useContext(Context);
   const [formData, setFormData] = useState({});
-  const [file, setFile] = useState(null)
-  const navegate = useNavigate()
+  const [file, setFile] = useState(null);
+  const [showLocationPopup, setShowLocationPopup] = useState(false);
+  const [locationName, setLocationName] = useState(""); // Estado para almacenar el nombre de la dirección
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  var fileData = new FormData();
+  const handleLocationSelect = (selectedLocation) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      location: selectedLocation
+    }));
+
+    // Obtener el nombre de la dirección basado en la ubicación seleccionada
+    fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${selectedLocation.lat}&lon=${selectedLocation.lng}`)
+      .then(response => response.json())
+      .then(data => {
+        const { road, suburb, city, state, country } = data.address;
+        const filteredAddress = [road, suburb, city, state, country].filter(part => part).join(', ');
+        setLocationName(filteredAddress);
+      });
+
+    setShowLocationPopup(false);
+  };
 
   const handleCreate = (e) => {
-    e.preventDefault()
-    fileData.append("post_data", JSON.stringify(formData))
+    e.preventDefault();
+    const fileData = new FormData();
+    fileData.append("post_data", JSON.stringify(formData));
     fileData.append('source_url', file);
     actions.createPost(fileData);
-    setFormData({})
-    setFile(null)
-    navegate('/feed')
+    setFormData({});
+    setFile(null);
+    navigate('/feed');
   };
 
   return (
@@ -41,7 +60,7 @@ const NewPostForm = () => {
             id="description"
             placeholder="Enter Description for the post"
             name="description"
-            value={formData.description}
+            value={formData.description || ""}
             onChange={(e) => {
               setFormData({ ...formData, description: e.target.value });
             }}
@@ -59,16 +78,30 @@ const NewPostForm = () => {
             onChange={handleFileChange}
           />
         </div>
-        {/* <Location/> */}
+        <div className="mb-3">
+          <button type="button" className=" form-control btnpaw" onClick={() => setShowLocationPopup(true)}>
+            Seleccionar Localización
+          </button>
+        </div>
+        {locationName && (
+          <div className="mb-3">
+            <p>Localización seleccionada: {locationName}</p>
+          </div>
+        )}
         <div className='col-md-2 newpostbtns'>
-          <button type="submit" className="btn me-5 ms-0 newcard">
+          <button type="submit" className="btn btnpaw me-5 ms-0 newcard">
             {store.post.id ? "Update" : "Submit"}
           </button>
-          <NavLink className="btn btn-lg newcard ms-4" to="/feed">
-            Return to feed</NavLink>
+          <NavLink className="btnpaw btn btn-lg newcard ms-4" to="/feed">
+            Return to feed
+          </NavLink>
         </div>
-
       </form>
+      <Location
+        onLocationSelect={handleLocationSelect}
+        showPopup={showLocationPopup}
+        onClose={() => setShowLocationPopup(false)}
+      />
     </>
   );
 };
