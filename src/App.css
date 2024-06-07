@@ -65,3 +65,117 @@
   display: flex;
   padding: 1em;
 }
+
+.popup {
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+  width: 90%;
+  max-width: 400px;
+  background-color:#FDDFDF;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-content button {
+  margin: 5px;
+}
+
+.zoom-home-boton {
+  position: absolute;
+  top: 65px;
+  width: 15px;
+  height: 15px;
+  padding: 14px;
+  background-position: center;
+  background-size: contain;
+  background-color: white;
+  z-index: 400;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.location-text {
+  font-size: 10px;
+}
+
+.searchform {
+  display: flex;
+  width: 100%;
+  height: 50px;
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+.searchbtn{
+  background-color:#EC9D9D;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-left: 0px;
+  height: 50px;
+}
+
+.searchInp {
+  background-color:white;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  color: black;
+  margin-right: 0px;
+  height: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.aceptloc {
+  background-color:hsl(0, 68%, 77%);
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-left: 0px;
+  height: 50px;
+  width: 50%;
+}
+.cancelloc{
+  background-color:#EC9D9D;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  margin-left: 0px;
+  height: 50px;
+  width: 50%;
+}
+
+.btnloc {
+  background-color: rgb(231, 231, 231);
+}
+
+.locationlabel {
+  font-size: 10px;
+  max-width: 170px;
+  background-color: #FDDFDF;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.loc-body {
+  background-color: #FDDFDF;
+}
