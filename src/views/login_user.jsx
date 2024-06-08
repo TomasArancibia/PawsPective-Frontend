@@ -3,11 +3,11 @@ import { Context } from "../store/appContext";
 import Login from "../components/login";
 
 const LoginUser = () => {
-    const { store, actions } = useContext(Context);
+    const { actions } = useContext(Context);
     
     return (
         <div>
-            <Login loginUser={actions.login} />
+            <Login login={actions.login} />
         </div>
     );
 };

@@ -18,6 +18,7 @@ import EditAccount from "./views/edit-account.jsx";
 import Feed from "./views/feed.jsx";
 import NewPost from "./views/new_post.jsx";
 import Login from "./components/login.jsx";
+import LoginUser from "./views/login_user.jsx";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
           <Route path="/sign_up" element={<SignUp />} />
           <Route path="/new_post/:id" element={<NewPost />} />
           <Route path="/new_post/" element={<NewPost />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginUser />} />
         </Routes>
       </BrowserRouter>
     </>
