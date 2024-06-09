@@ -14,6 +14,7 @@ const Login = ({ login }) => {
       const result = await login(email, password);
       if (result) {
         console.log("User logged in succesfully:", result);
+        navigate(`/edit_account/${result.data.id}`);
       } else {
         console.log("Login failed");
       }
