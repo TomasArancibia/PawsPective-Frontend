@@ -4,19 +4,20 @@ import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserSlash, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import userIcon from "../assets/user-icon.png";
-import animalsPhoto from "../assets/AnimalsPhoto.png";
+import Image from "../assets/AnimalsPhoto.png";
+import "../views/edit_account.css";
 
 const Edit = ({ userId }) => {
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
-  const [formData, setFormData] = useState({ 
+  const [formData, setFormData] = useState({
     id: "",
     username: "",
     email: "",
     name: "",
     lastname: "",
     age: "",
-    password: ""
+    password: "",
   });
 
   useEffect(() => {
@@ -24,8 +25,8 @@ const Edit = ({ userId }) => {
       try {
         const response = await fetch(`http://127.0.0.1:3000/users/${userId}`, {
           headers: {
-            "Authorization": `Bearer ${store.token}`
-          }
+            Authorization: `Bearer ${store.token}`,
+          },
         });
         const data = await response.json();
         if (response.ok) {
@@ -35,11 +36,11 @@ const Edit = ({ userId }) => {
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
-    }
-  };
-  
-  fetchUser();
-}, [userId, store.token]);
+      }
+    };
+
+    fetchUser();
+  }, [userId, store.token]);
 
   const handleEdit = () => {
     console.log("Editing user:", formData);
@@ -55,47 +56,73 @@ const Edit = ({ userId }) => {
   return (
     <div>
       <div className="container-fluid d-flex justify-content-center">
-        <img className="rounded-circle" src={userIcon} alt="User Avatar" />
+        <div className="circle-photo">
+          <img className="circle-photo" src={Image} alt="animals" />
+        </div>
       </div>
       <form className="container-fluid" onSubmit={handleEdit}>
+        <label htmlFor="email" className="form-label m-1">
+          {" "}Email{" "}</label>
         <input
-          className="form-control m-2"
+          className="form-control"
           type="email"
           placeholder="Email"
           value={formData.email}
           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
+        <label htmlFor="username" className="form-label m-1">
+          {" "}Username{" "}</label>
         <input
-          className="form-control m-2"
+          className="form-control"
           type="text"
           placeholder="Username"
           value={formData.username}
-          onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, username: e.target.value })
+          }
         />
+        <label htmlFor="password" className="form-label m-1">
+          {" "}Password{" "}</label>
         <input
-          className="form-control m-2"
+          className="form-control"
           type="password"
           placeholder="Password"
           value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          onChange={(e) =>
+            setFormData({ ...formData, password: e.target.value })
+          }
         />
+        
         <div className="d-inline-flex space-evenly m-1">
+          <div className="me-1">
+        <label htmlFor="name" className="form-label m-1">
+          {" "}Name{" "}</label>
           <input
-            className="form-control m-1"
+            className="form-control"
             type="text"
             placeholder="Name"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
+          </div>
+          <div className="ms-1">
+          <label htmlFor="lastname" className="form-label m-1">
+            {" "}Last Name{" "}
+          </label>
           <input
-            className="form-control m-1"
+            className="form-control"
             type="text"
             placeholder="Last Name"
             value={formData.lastname}
-            onChange={(e) => setFormData({ ...formData, lastname: e.target.value })}
+            onChange={(e) =>
+              setFormData({ ...formData, lastname: e.target.value })
+            }
           />
+          </div>
         </div>
-        <div className="m-1">
+        <div>
+          <label htmlFor="age" className="form-label m-1">
+            {" "}Age{" "}</label>
           <select
             className="form-select"
             size="1"
@@ -118,10 +145,14 @@ const Edit = ({ userId }) => {
         </div>
       </form>
       <div className="border-top border-5 p-1">
-      <div className="container-fluid d-flex justify-content-center">
-        <button type="button" className="btn m-1 text-light" onClick={handleDelete}>
-          <FontAwesomeIcon icon={faUserSlash} /> Delete User
-        </button>
+        <div className="container-fluid d-flex justify-content-center">
+          <button
+            type="button"
+            className="btn m-1 text-light"
+            onClick={handleDelete}
+          >
+            <FontAwesomeIcon icon={faUserSlash} /> Delete User
+          </button>
         </div>
       </div>
     </div>
