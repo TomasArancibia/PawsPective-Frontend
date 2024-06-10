@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Image from "../assets/AnimalsPhoto.png";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ loginUser }) => {
+const Login = ({ login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -11,9 +11,10 @@ const Login = ({ loginUser }) => {
     e.preventDefault();
 
     try {
-      const result = await loginUser(email, password);
+      const result = await login(email, password);
       if (result) {
         console.log("User logged in succesfully:", result);
+        navigate(`/edit_account/${result.data.id}`);
       } else {
         console.log("Login failed");
       }

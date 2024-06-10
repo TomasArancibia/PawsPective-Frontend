@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import Login from "../components/login";
-import { loginUser } from "../store/flux";
 
 const LoginUser = () => {
+    const { actions } = useContext(Context);
     
     return (
         <div>
-            <Login loginUser={loginUser} />
+            <Login login={actions.login} />
         </div>
     );
 };
