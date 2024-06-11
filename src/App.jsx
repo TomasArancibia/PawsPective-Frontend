@@ -19,6 +19,7 @@ import Feed from "./views/feed.jsx";
 import NewPost from "./views/new_post.jsx";
 import Login from "./components/login.jsx";
 import LoginUser from "./views/login_user.jsx";
+import LandingPage from "./views/LandingPage.jsx";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Navbars />
         <Footer />
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/edit_account/:userId" element={<EditAccount />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/sign_up" element={<SignUp />} />

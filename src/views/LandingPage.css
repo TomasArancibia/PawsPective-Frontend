@@ -1,0 +1,40 @@
+.landing-container {
+    /*font-family: 'Arial', sans-serif;*/
+    color: #333;
+  }
+  
+  .landing-logo {
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f8a1a1;
+  }
+  
+  .hero-image {
+    max-width: 80%;
+    max-height: 50%;
+    width: auto;
+    height: auto;
+  }
+  
+  .cta-button {
+    background-color: #EC9D9D;
+    color: white;
+    width: 7em;
+  }
+  
+  .landing-about, .landing-features, .landing-contact {
+    margin: 40px 0;
+  }
+  
+  /* Override Bootstrap link colors */
+.nav-link {
+    color: #333 !important;
+  }
+  
+  .nav-link:hover {
+    color: #555 !important;
+  }

@@ -70,7 +70,7 @@ const Login = ({ login }) => {
           </div>
           <div class="d-flex justify-content-evenly">
             <div className="container-fluid d-flex justify-content-center">
-              <button className="Login-btn btn submit"> Login </button>
+              <button className="Login-btn btn submit text-light"> Login </button>
             </div>
 
             <div className="container-fluid d-flex justify-content-center ">
