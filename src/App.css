@@ -57,6 +57,8 @@
 
 .newcard {
   color: white;
+  min-width: 200px;
+
 }
 
 .newpostbtns {
@@ -178,4 +180,10 @@
 
 .loc-body {
   background-color: #FDDFDF;
+}
+
+.cntr-btn {
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }

@@ -30,7 +30,7 @@ const PostFeed = () => {
 
   return (
     <>
-      <div className='col-md-2 text-center pt-3'>
+      <div className='col-md-2 text-center pt-3 cntr-btn'>
         <NavLink className="btn btn-lg newcard" to="/new_post">Create new Post</NavLink>
       </div>  
       <div className="container-fluid">
