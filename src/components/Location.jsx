@@ -44,8 +44,10 @@ const Location = ({ onLocationSelect, showPopup, onClose }) => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setPosition({ lat: latitude, lng: longitude });
-          console.log("Geolocalización obtenida:", { lat: latitude, lng: longitude });
+          const currentLocation = { lat: latitude, lng: longitude };
+          setPosition(currentLocation);
+          setSearchResult(currentLocation); // Inicializar también searchResult
+          console.log("Geolocalización obtenida:", currentLocation);
         },
         (error) => {
           console.error("Error obteniendo la geolocalización:", error);
