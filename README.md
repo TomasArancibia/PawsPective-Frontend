@@ -1,4 +1,7 @@
 ﻿# Pawspective
+ 
+ ![Logo_App](https://github.com/TomasArancibia/PawsPective-Frontend/assets/155495153/c2fe0a93-4f57-42fc-a338-c29945e6482b)
+
 Hola esta es la entrega del proyecto final de Pawspective, el cual es una red social para animales. 
 **¿Que es Pawspective?**
 Nuestra mision en PawsPective es crear una comunidad vibrante y acogedora donde los amantes de los animales puedan compartir, descubrir e interactuar con el contenido relacionado con sus mascotas. Queremos ser la plataforma líder que celebre la alegría, el amor y las historias únicas de los animales de compañía, conectando a los dueños de mascotas en Chile. A través de nuestra aplicación, aspiramos a fomentar la concienciación sobre el bienestar animal, promover la adopción responsable y crear un espacio seguro y divertido donde cada mascota pueda brillar.
